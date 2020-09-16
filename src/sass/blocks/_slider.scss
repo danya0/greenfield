@@ -1,0 +1,23 @@
+.slider {
+    overflow: hidden;
+}
+
+.carousel {
+    transition: transform 3s ease;
+    &.slide1 {
+        transform: translateX(0);
+    }
+    &.slide2 {
+        transform: translateX(-100vw);
+    }
+    &.slide3 {
+        transform: translateX(-200vw);
+    }
+    &.slide4 {
+        transform: translateX(-300vw);
+    }
+    &.slide5 {
+        transform: translateX(-400vw);
+    }
+    display: flex;
+}

@@ -1,0 +1,154 @@
+.section3 {
+    z-index: 3;
+    padding-left: 35vw;
+    position: relative;
+    background: #fff;
+
+    display: flex;
+    align-items: center;
+
+    @include w-mobile {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    // * parallax
+
+    &-parallax {
+        &-container {
+            position: absolute;
+            top: 365px;
+            left: 616px;
+            width: 1165px;
+            height: 630px;
+        } 
+        &__img {
+            position: absolute;
+            &.img {
+                &-2 {
+                    top: 101px;
+                    left: 595px;
+                }
+                &-3 {
+                    right: 0;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+
+    // * Картинка слева
+
+    &::before {
+        @include setTransition((transform));
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 30vw;
+
+        background: center / cover no-repeat;
+        background-image: url('../img/section3/img_left.jpg');
+        animation: 4s changePicture 4s infinite alternate;
+
+        @include w-mobile {
+            position: static;
+            width: 100vw;
+            height: 200px;
+            margin-bottom: 20px;
+            // width: 100vw;
+            // top: 0;
+            // height: 20vh;
+        }
+    }
+
+    @keyframes changePicture {
+        0% {
+            background-image: url('../img/section3/img_left.jpg');
+        }
+        100% {
+            background-image: url('../img/section3/img_left_fall.jpg');
+        }
+    }
+
+    // * Каритнка справа
+
+    &::after {
+        @include setTransition;
+        z-index: 1;
+        content: url('../img/section3/img_top.jpg');
+        position: absolute;
+        top: 0;
+        right: 125px;
+        object-fit: cover;
+
+        @include w-1080 {
+            right: -450px;
+        }
+
+        @include w-mobile {
+            display: none;
+        }
+
+        // ? Вертикальный адаптив
+
+        @media (max-height: 679px) {
+            top: -200px;
+        }
+    }
+
+    // * Компоненты
+
+    &-text {
+        z-index: 4;
+        max-width: 880px;
+        margin-bottom: -350px;
+
+        @include w-mobile {
+            padding: 0px 10px;
+            text-align: center;
+        }
+
+        @media (max-height: 679px) {
+            margin-bottom: 0;
+        }
+    }
+
+    // * Классы для анимации переходов
+
+    &.coming {
+        .section3 {
+            &-parallax-wrap {
+                animation: 2s comingParallaxAnim .3s backwards;
+            }
+
+            &__title {
+                animation: 2s comingAnim .5s backwards;
+            }
+            
+            &__subtitle {
+                animation: 2s comingAnim .3s backwards;
+            }
+        }
+    }
+
+    &.outgoing {
+        .section3 {
+            &__title {
+                animation: 2s outgoingAnim forwards;
+            }
+            
+            &__subtitle {
+                animation: 2s outgoingAnim .3s forwards;
+            }
+        }
+        &::before {
+            transform: scale(1.1);
+        }
+        &::after {
+            transform: scale(1.1);
+        }
+    }
+}

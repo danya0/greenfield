@@ -1,0 +1,15 @@
+@mixin fontFace($fn, $url, $fw, $fs) {
+  @font-face {
+    font-family: $fn;
+    src: $url;
+    font-weight: $fw;
+    font-style: $fs;
+  }
+    
+}
+@mixin font($fn) {
+  body {
+    font-family: $fn, sans-serif
+  }
+}
+
