@@ -87,16 +87,24 @@ const slider = () => {
     }
 
     // * Использую плагин "HAMMER.JS" для отслеживания свайпов с мобильных устройств
-    new Hammer(carousel).on('swipe', function(ev) {
-        let delta = null;
-        ev.deltaX < 0 ? delta = 1 : delta = -1;
+    new Hammer(carousel).on('swipe panup pandown', function(ev) {
+        if(ev.type === 'swipe') {
+            let delta = null;
+            ev.deltaX < 0 ? delta = 1 : delta = -1;
 
-        if (
-            (aviableNow && delta === 1 && slideValue !== 5) ||
-            (aviableNow && delta === -1 && slideValue !== 1)
-        ) {
+            if (
+                (aviableNow && delta === 1 && slideValue !== 5) ||
+                (aviableNow && delta === -1 && slideValue !== 1)
+            ) {
+                setDelay();
+                changeSlide(delta);
+            }
+        } else if (ev.type === 'panup' && aviableNow) {
             setDelay();
-            changeSlide(delta);
+            changeSlide(1);
+        } else if (ev.type === 'pandown' && aviableNow) {
+            setDelay();
+            changeSlide(-1);
         }
     });
 };
