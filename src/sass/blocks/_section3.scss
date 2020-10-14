@@ -76,7 +76,7 @@
     // * Каритнка справа
 
     &::after {
-        @include setTransition;
+        @include setTransition(transform);
         z-index: 1;
         content: url('../img/section3/img_top.jpg');
         position: absolute;

@@ -57,10 +57,19 @@ const slider = () => {
         // ? Вызываем функцию которая меняет логотип
         changeLogo(slideValue)
 
-        carouselClasses.splice(-1, 1);
+        carouselClasses.splice(1, 2);
+        console.log(carouselClasses);
+        // ? Добавляем класс с transition для плавной анимации
+        carouselClasses.push('switches');
         carouselClasses.push(`slide${slideValue}`);
 
         carousel.classList.value = carouselClasses.join(" ");
+        
+        // ? Через три секунды удаляем класс switches, чтобы избежать багов анимации и заново пушим классы
+        setTimeout(() => {
+            carouselClasses.splice(1, 1);
+            carousel.classList.value = carouselClasses.join(" ");
+        }, 3000);
     }
 
     // * Функция которая устанавливает задержку между вызовами функции "changeSlide", чтобы не вызывать лишних ошибок, или искажений графики
@@ -70,7 +79,7 @@ const slider = () => {
 
             setTimeout(() => {
                 aviableNow = true;
-            }, 2990);
+            }, 3000);
         }
     }
 

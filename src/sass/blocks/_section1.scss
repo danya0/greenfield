@@ -1,5 +1,5 @@
 .section1 {
-    @include setTransition;
+    @include setTransition(transform);
     position: relative;
 
     padding-left: 127px;
@@ -10,7 +10,7 @@
     }
 
     &-bg {
-        @include setTransition();
+        @include setTransition;
         position: absolute;
         left: 50%;
         top: 50%;

@@ -19,7 +19,7 @@
     &::before {
         content: url('../img/section2/bottom_cup.jpg');
         overflow: hidden;
-        @include setTransition((transform));
+        @include setTransition(transform);
 
         position: absolute;
         right: 50px;

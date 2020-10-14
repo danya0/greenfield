@@ -3,7 +3,9 @@
 }
 
 .carousel {
-    transition: transform 3s ease;
+    &.switches {
+        transition: transform 3s ease;
+    }
     &.slide1 {
         transform: translateX(0);
     }

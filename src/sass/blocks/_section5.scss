@@ -65,8 +65,11 @@
         @media (max-width: 1301px) {
             flex-basis: 100%;
             height: 300px;
-            order: 2;
+            order: 1;
             justify-content: center;
+        }
+        @media (max-height: 750px) {
+            display: none;
         }
     }
 
@@ -84,6 +87,7 @@
             flex-basis: 100%;
             text-align: center;
             align-items: center;
+            order: 2;
 
             margin-bottom: 20px;
         }
